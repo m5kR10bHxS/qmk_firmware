@@ -47,9 +47,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define LOCKING_RESYNC_ENABLE
 
 /* Configure Auto Shift */
-#define AUTO_SHIFT_TIMEOUT 150
-#define NO_AUTO_SHIFT_SPECIAL
-#define NO_AUTO_SHIFT_NUMERIC
+#define AUTO_SHIFT_TIMEOUT 160
+//#define NO_AUTO_SHIFT_SPECIAL
+//#define NO_AUTO_SHIFT_NUMERIC
 
 /*
  * Feature disable options

@@ -42,9 +42,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEBOUNCE    5
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
+//#define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
+//#define LOCKING_RESYNC_ENABLE
 
 /* Configure Auto Shift */
 #define AUTO_SHIFT_TIMEOUT 150
@@ -68,3 +68,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_ONESHOT
 //#define NO_ACTION_MACRO
 //#define NO_ACTION_FUNCTION
+
+// The Leader key allows to flexibly assign macros to key sequences.
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 350
+
+#define TAPPING_TERM 200
+
+// Allows media codes to properly register in macros and rotary encoder code
+#define TAP_CODE_DELAY 10

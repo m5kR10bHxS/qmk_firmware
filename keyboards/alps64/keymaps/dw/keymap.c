@@ -1,3 +1,5 @@
+// Alps64
+
 #include QMK_KEYBOARD_H
 
 uint16_t copy_paste_timer;
@@ -123,13 +125,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case KC_KEEB:
             if (record->event.pressed) {
-                send_unicode_hex_string("2328"); 
+                send_unicode_hex_string("0x2328"); 
             }
         return false; 
             break;
         case KC_TMRK:
             if (record->event.pressed) {
-                send_unicode_hex_string("2122"); 
+                send_unicode_hex_string("0x2122"); 
             }
         return false; 
             break;

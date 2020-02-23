@@ -21,18 +21,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 uint16_t copy_paste_timer;
 
-#define KM_QWERTY  0
-#define KM_WORKMAN 1
-#define KM_NAV     2
-#define KM_ADJUST  3
+#define _QWERTY  0
+#define _WORKMAN 1
+#define _NAV     2
+#define _ADJUST  3
 
 enum custom_keycodes {
     KC_CCCV = SAFE_RANGE,
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/*
- * Base Layer: QWERTY
+/*Base Layer: QWERTY
  *
  * +--------+-----+------+------+------+------+----+------+------+------+------+----+------+------+-------+-------+    +--------+--------+--------+
  * |  Esc   |     |  F1  |  F2  |  F3  |  F4  |    |  F5  |  F6  |  F7  |  F8  |    |  F9  |  F10 |  F11  |  F12  |    | Prt Scr| Scr Lk | WORKMAN|
@@ -45,23 +44,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+------+------+------+------+------+-------+-------+---------------+             +--------+
  * |      Shift    |  \ | |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |  , < |  . > |  /  ?  |     Shift     |             |   Up   |
  * |--------+------+------+------+------+------+------+------+------+------+------+-------+-------+-------+-------+    +--------+--------+--------+
- * |  Ctrl  |  GUI |  Alt |                         Space                         |  Alt  |  GUI  |  Menu |  Ctrl |    |  Left  |  Down  |  Right |
+ * |  Ctrl  |  GUI |  Alt |                         Space                         |  Alt  |  GUI  | ADJUST|  Ctrl |    |  Left  |  Down  |  Right |
  *  --------+------+------+-------------------------------------------------------+-------+-------+-------+-------+    +--------+--------+--------+
- *
  */
 
   /* Layer 0: Standard ISO layer */
-  [KM_QWERTY] = LAYOUT( \
+  [_QWERTY] = LAYOUT( \
     KC_ESC,           KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,     KC_PSCR, KC_SLCK, MO(1),   \
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,    KC_INS,  KC_HOME, KC_PGUP, \
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,    KC_DEL,  KC_END,  KC_PGDN, \
     KC_CLCK, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,                                \
     KC_LSFT, KC_NUBS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,             KC_UP,            \
-    KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT, MO(3),   KC_MENU, KC_RCTL,      KC_LEFT, KC_DOWN, KC_RGHT  \
+    KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT, KC_RGUI, MO(3),   KC_RCTL,    KC_LEFT, KC_DOWN, KC_RGHT  \
   ),
 
-/*
- * Alternate Base Layer: WORKMAN
+/* Alternate Base Layer: WORKMAN
  *
  * +--------+-----+------+------+------+------+----+------+------+------+------+----+------+------+-------+-------+    +--------+--------+--------+
  * |  Esc   |     |  F1  |  F2  |  F3  |  F4  |    |  F5  |  F6  |  F7  |  F8  |    |  F9  |  F10 |  F11  |  F12  |    | Prt Scr| Scr Lk | QWERTY |
@@ -74,23 +71,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+------+------+------+------+------+-------+-------+---------------+             +--------+
  * |      Shift    |  \ | |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |  , < |  . > |  /  ?  |     Shift     |             |   Up   |
  * |--------+------+------+------+------+------+------+------+------+------+------+-------+-------+-------+-------+    +--------+--------+--------+
- * |  CCCV  |  GUI |  Alt |                     Space Fn (_NAV)                   |  Alt  | ADJUST| Leader|  Ctrl |    |  Left  |  Down  |  Right |
+ * |  CCCV  |  GUI |  Alt |                     Space Fn (_NAV)                   |  Alt  | Leader| ADJUST|  Ctrl |    |  Left  |  Down  |  Right |
  *  --------+------+------+-------------------------------------------------------+-------+-------+-------+-------+    +--------+--------+--------+
- *
  */
 
   /* Layer 1: Standard ISO layer */
-  [KM_WORKMAN] = LAYOUT( \
+  [_WORKMAN] = LAYOUT( \
     KC_ESC,           KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,     KC_PSCR, KC_SLCK, _______, \
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,    KC_INS,  KC_HOME, KC_PGUP, \
     KC_TAB,  KC_Q,    KC_D,    KC_R,    KC_W,    KC_B,    KC_J,    KC_F,    KC_U,    KC_P,    KC_SCLN, KC_LBRC, KC_RBRC, KC_BSLS,    KC_DEL,  KC_END,  KC_PGDN, \
     KC_LCTL, KC_A,    KC_S,    KC_H,    KC_T,    KC_G,    KC_Y,    KC_N,    KC_E,    KC_O,    KC_I,    KC_QUOT,          KC_ENT,                                \
     KC_LSFT, KC_NUBS, KC_Z,    KC_X,    KC_M,    KC_C,    KC_V,    KC_K,    KC_L,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,             KC_UP,            \
-    KC_CCCV, KC_LGUI, KC_LALT,                            LT(_NAV,KC_SPC)KC_SPC,              KC_RALT, MO(3),   KC_MENU, KC_RCTL,    KC_LEFT, KC_DOWN, KC_RGHT  \
+    KC_CCCV, KC_LGUI, KC_LALT,                            LT(_NAV,KC_SPC)KC_SPC,              KC_RALT, KC_LEAD, MO(3),   KC_RCTL,    KC_LEFT, KC_DOWN, KC_RGHT  \
   ),
 
   /* Layer 1: Function layer */
-  [KM_NAV] = LAYOUT( \
+  [_NAV] = LAYOUT( \
     _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______,    _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______,    _______, _______, _______, \
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______,    _______, _______, _______, \
@@ -100,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   /* Layer 1: Function layer */
-  [KM_ADJUST] = LAYOUT( \
+  [_ADJUST] = LAYOUT( \
     _______,           _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, \
     _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, \
     _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, \
@@ -122,6 +118,16 @@ void led_set_user(uint8_t usb_led) {
   } else {
     ph_sclk_led_off();
   }
+}
+
+// Automate the auto shift feature: off w/ _QWERTY, but on w/ _WORKMAN
+layer_state_t default_layer_state_set_user(layer_state_t state) {
+    if (layer_state_cmp(state, _WORKMAN)) {
+        autoshift_enable();
+    } else {
+        autoshift_disable();
+    }
+    return state;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {

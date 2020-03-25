@@ -28,8 +28,7 @@ uint16_t copy_paste_timer;
 
 enum custom_keycodes {
     KC_CCCV = SAFE_RANGE,
-
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+};
 
 /*Base Layer: QWERTY
  *
@@ -47,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |  Ctrl  |  GUI |  Alt |                         Space                         |  Alt  |  GUI  | ADJUST|  Ctrl |    |  Left  |  Down  |  Right |
  *  --------+------+------+-------------------------------------------------------+-------+-------+-------+-------+    +--------+--------+--------+
  */
-
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Layer 0: Standard ISO layer */
   [_QWERTY] = LAYOUT( \
     KC_ESC,           KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,     KC_PSCR, KC_SLCK, MO(1),   \
@@ -82,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_D,    KC_R,    KC_W,    KC_B,    KC_J,    KC_F,    KC_U,    KC_P,    KC_SCLN, KC_LBRC, KC_RBRC, KC_BSLS,    KC_DEL,  KC_END,  KC_PGDN, \
     KC_LCTL, KC_A,    KC_S,    KC_H,    KC_T,    KC_G,    KC_Y,    KC_N,    KC_E,    KC_O,    KC_I,    KC_QUOT,          KC_ENT,                                \
     KC_LSFT, KC_NUBS, KC_Z,    KC_X,    KC_M,    KC_C,    KC_V,    KC_K,    KC_L,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,             KC_UP,            \
-    KC_CCCV, KC_LGUI, KC_LALT,                            LT(_NAV,KC_SPC)KC_SPC,              KC_RALT, KC_LEAD, MO(3),   KC_RCTL,    KC_LEFT, KC_DOWN, KC_RGHT  \
+    KC_CCCV, KC_LGUI, KC_LALT,                            LT(_NAV,KC_SPC),                    KC_RALT, KC_LEAD, MO(3),   KC_RCTL,    KC_LEFT, KC_DOWN, KC_RGHT  \
   ),
 
   /* Layer 1: Function layer */
@@ -120,7 +119,7 @@ void led_set_user(uint8_t usb_led) {
   }
 }
 
-// Automate the auto shift feature: off w/ _QWERTY, but on w/ _WORKMAN
+/*// Automate the auto shift feature: off w/ _QWERTY, but on w/ _WORKMAN
 layer_state_t default_layer_state_set_user(layer_state_t state) {
     if (layer_state_cmp(state, _WORKMAN)) {
         autoshift_enable();
@@ -129,7 +128,7 @@ layer_state_t default_layer_state_set_user(layer_state_t state) {
     }
     return state;
 }
-
+*/
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_CCCV:  // One key copy/paste
@@ -168,3 +167,4 @@ void matrix_scan_user(void) {
         }
     }
 }
+

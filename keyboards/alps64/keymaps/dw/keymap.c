@@ -38,6 +38,19 @@ enum unicode_names {
 };
 */
 
+/*enum unicode_names {
+ *    BANG,
+ *    IRONY,
+ *    SNEK
+ *};
+ *
+ *const uint32_t PROGMEM unicode_map[] = {
+ *    [BANG]  = 0x203D,  // ‽
+ *    [IRONY] = 0x2E2E,  // ⸮
+ *    [SNEK]  = 0x1F40D, // 🐍
+ *};
+ */
+
 enum custom_keycodes {
     KC_CCCV = SAFE_RANGE,
     KC_KEEB,
@@ -101,7 +114,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_NAV] = LAYOUT_infinity( \
-      _______,  _______, KC_INS,  KC_HOME, KC_PGUP, KC_SYSREQ, _______, X(BANG),    X(IRONY),   X(SNEK),    _______,     _______, _______, _______, _______, \
+      _______,  _______, KC_INS,  KC_HOME, KC_PGUP, KC_SYSREQ, _______, _______,    _______,    _______,    _______,     _______, _______, _______, _______, \
+      _______,  _______, KC_DEL,  KC_END,  KC_PGDN, KC_PAUS,   _______, _______,    _______,    _______,    _______,     _______, _______, _______,          \
+      _______,  _______, KC_INS,  KC_HOME, KC_PGUP, KC_SYSREQ, _______, _______,    _______,    _______,    _______,     _______, _______, _______, _______, \
       _______,  _______, KC_DEL,  KC_END,  KC_PGDN, KC_PAUS,   _______, _______,    _______,    _______,    _______,     _______, _______, _______,          \
       KC_CAPS,  _______, _______, _______, _______, KC_BRK,    _______, KC_LEFT,    KC_DOWN,    KC_UP,      KC_RIGHT,    _______, _______,                   \
       _______,  _______, _______, _______, _______, _______,   _______, KC_PGUP,    KC_PGDN,    _______,    _______,     _______, _______,                   \
